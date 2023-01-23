@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,12 +15,6 @@ public class Dude {
 
     void addFavorite(Dude recipient) {
         favorites.add(recipient);
-    }
-
-    public Dude(int index, Dude... favorites) {
-        this(index);
-        Arrays.stream(favorites)
-                .forEach(this::addFavorite);
     }
 
     List<Dude> getFavorites() {

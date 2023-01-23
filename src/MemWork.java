@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Абстрактная социальная сеть для чтения мемов за 55 минут
@@ -28,15 +27,11 @@ public class MemWork {
                 .forEach(d::addFavorite);
     }
 
-    Stream<Dude> dudes() {
-        return dudes.stream();
-    }
-
     int size() {
         return dudes.size();
     }
 
-    List<Dude> favoritesOf(int dudeIndex) {
-        return dudes.get(dudeIndex).getFavorites();
+    Dude getDude(int index) {
+        return dudes.get(index);
     }
 }
