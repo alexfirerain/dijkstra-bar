@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -10,11 +11,21 @@ import java.util.stream.Stream;
 public class MemWork {
     List<Dude> dudes = new ArrayList<>();
 
+    void addEmptyDude() {
+        dudes.add(new Dude(dudes.size()));
+    }
+
+    public MemWork(int size) {
+        IntStream.range(0, size)
+                .forEach(i -> addEmptyDude());
+    }
+
     void addFavorites(int senderIndex, int... recipientIndices) {
         Dude d = dudes.get(senderIndex);
 
-        for (int r : recipientIndices)
-            d.addFavorite(dudes.get(r));
+        Arrays.stream(recipientIndices)
+                .mapToObj(r -> dudes.get(r))
+                .forEach(d::addFavorite);
     }
 
     Stream<Dude> dudes() {
